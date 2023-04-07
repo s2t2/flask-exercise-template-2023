@@ -12,5 +12,5 @@ product_routes = Blueprint("product_routes", __name__)
 @product_routes.route("/products")
 def products():
     products = DEFAULT_PRODUCTS
-    return products
-    #return render_template("products.html", products=products)
+    #return products
+    return render_template("products.html", products=products)
