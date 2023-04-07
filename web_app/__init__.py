@@ -10,8 +10,8 @@ from flask import Flask
 
 from web_app.routes.home_routes import home_routes
 from web_app.routes.product_routes import product_routes
-#from web_app.routes.auth_routes import auth_routes
-#from web_app.routes.user_routes import user_routes
+from web_app.routes.auth_routes import auth_routes
+from web_app.routes.user_routes import user_routes
 
 load_dotenv()
 
@@ -49,14 +49,6 @@ def create_app():
     # for client-side google analytics:
     app.config["GA_TRACKER_ID"] = GA_TRACKER_ID
 
-    # for front-end:
-    app.config["APP_TITLE"] = "My App"
-    # https://icons.getbootstrap.com/
-    app.config["NAV_ICON_CLASS"] = "bi-globe"
-    # https://getbootstrap.com/docs/5.1/components/navbar/#color-schemes
-    # https://getbootstrap.com/docs/5.1/customize/color/#theme-colors
-    app.config["NAV_COLOR_CLASS"] = "navbar-dark bg-primary"
-
     # set timezone to mimic production mode when running locally:
     os.environ["TZ"] = "UTC"
 
@@ -87,8 +79,8 @@ def create_app():
 
     app.register_blueprint(home_routes)
     app.register_blueprint(product_routes)
-    #app.register_blueprint(auth_routes)
-    #app.register_blueprint(user_routes)
+    app.register_blueprint(auth_routes)
+    app.register_blueprint(user_routes)
 
     return app
 

@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>{{ config.APP_TITLE }}</title>
+    <title>My App</title>
 
     <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='favicon.ico') }}">
 
@@ -87,12 +87,15 @@
 
     {% set active_page = active_page|default('home') -%}
 
-    <nav class="navbar navbar-expand-lg {{ config.NAV_COLOR_CLASS }}">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
         <div class="container-fluid">
             <a class="navbar-brand" href="/">
-                <i class="{{ config.NAV_ICON_CLASS }}" style="font-size: 1.7rem; color: white;"></i>
+                <!-- ICON CLASS
+                    https://icons.getbootstrap.com/
+                -->
+                <i class="bi-globe" style="font-size: 1.7rem; color: white;"></i>
                 &nbsp;
-                {{ config.APP_TITLE }}
+                My App
             </a>
 
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -175,8 +178,10 @@
 
         var debugInfo = {"env": APP_ENV, "version": APP_VERSION}
         console.log("DEBUG INFO:", debugInfo)
-        gtag("event", "debugging_info", debugInfo) // see: https://developers.google.com/gtagjs/reference/event
 
+        // https://developers.google.com/gtagjs/reference/event
+        // send some example event to google analytics:
+        //gtag("event", "debugging_info", debugInfo)
 
     </script>
 
