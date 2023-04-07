@@ -1,0 +1,40 @@
+
+
+
+
+# reading environment vars:
+python-dotenv
+
+# web application:
+Flask #==2.2.2
+
+# auth (login with google via oauth):
+#Authlib #==1.0.0
+
+# database (google sheets):
+#gspread
+
+# database (relational)
+#Flask-SQLAlchemy==3.0.3
+#Flask-Migrate==4.0.4
+
+
+
+#
+# TEST
+#
+
+# for collecting and running tests:
+#pytest
+
+# for parsing the contents of visited pages:
+#beautifulsoup4
+
+
+
+
+#
+# PRODUCTION
+#
+
+#gunicorn
