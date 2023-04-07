@@ -20,6 +20,11 @@ Install package dependencies:
 pip install -r requirements.txt
 ```
 
+## Services Setup
+
+  + [Google Cloud](/setup/GOOGLE_CLOUD.md)
+  + [Google Login](/setup/GOOGLE_LOGIN.md)
+
 
 ## Configuration
 
@@ -27,7 +32,13 @@ Create a new file called ".env" in the root directory of this repo, and paste in
 
 ```sh
 # this is the ".env" file...
+
+# for flask:
 FLASK_APP="web_app"
+
+# for google login:
+GOOGLE_CLIENT_ID="___________"
+GOOGLE_CLIENT_SECRET="___________"
 ```
 
 ## Usage

@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 
 from flask import Flask
-#from authlib.integrations.flask_client import OAuth
+from authlib.integrations.flask_client import OAuth
 
 #from app.spreadsheet_service import SpreadsheetService
 
@@ -21,8 +21,8 @@ APP_VERSION = os.getenv("APP_VERSION", default="v0.0.1") # update upon new relea
 SECRET_KEY = os.getenv("SECRET_KEY", default="super secret") # IMPORTANT: override in production
 
 # for google oauth login:
-#GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
-#GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
+GOOGLE_CLIENT_ID = os.getenv("GOOGLE_CLIENT_ID")
+GOOGLE_CLIENT_SECRET = os.getenv("GOOGLE_CLIENT_SECRET")
 
 # for google analytics:
 GA_TRACKER_ID = os.getenv("GA_TRACKER_ID", default="G-OOPS")
@@ -56,16 +56,16 @@ def create_app():
     # AUTH
     #
 
-    #oauth = OAuth(app)
-    #oauth.register(
-    #    name="google",
-    #    server_metadata_url="https://accounts.google.com/.well-known/openid-configuration",
-    #    client_kwargs={"scope": "openid email profile"},
-    #    client_id=GOOGLE_CLIENT_ID,
-    #    client_secret=GOOGLE_CLIENT_SECRET,
-    #    #authorize_params={"access_type": "offline"} # give us the refresh token! see: https://stackoverflow.com/questions/62293888/obtaining-and-storing-refresh-token-using-authlib-with-flask
-    #)
-    #app.config["OAUTH"] = oauth
+    oauth = OAuth(app)
+    oauth.register(
+        name="google",
+        server_metadata_url="https://accounts.google.com/.well-known/openid-configuration",
+        client_kwargs={"scope": "openid email profile"},
+        client_id=GOOGLE_CLIENT_ID,
+        client_secret=GOOGLE_CLIENT_SECRET,
+        #authorize_params={"access_type": "offline"} # give us the refresh token! see: https://stackoverflow.com/questions/62293888/obtaining-and-storing-refresh-token-using-authlib-with-flask
+    )
+    app.config["OAUTH"] = oauth
 
     #
     # SERVICES
