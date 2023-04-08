@@ -1,3 +1,4 @@
+from operator import itemgetter
 
 from flask import Blueprint, render_template, flash, redirect, current_app, url_for, session, request #, jsonify
 
@@ -36,25 +37,25 @@ def create_order():
     current_user = session.get("current_user")
     user_email = current_user["email"]
 
-    # TODO: implement ordering
-    flash(f"OOPS, Ordering not yet implemented!", "warning")
-    return redirect("/user/orders")
+    ## TODO: implement ordering
+    #flash(f"OOPS, Ordering not yet implemented!", "warning")
+    #return redirect("/user/orders")
 
-    #service = current_app.config["SPREADSHEET_SERVICE"]
-    #try:
-    #    new_order = {
-    #        "user_email": user_email,
-    #        "product_id": int(product_id),
-    #        "product_name": product_name,
-    #        "product_price": float(product_price)
-    #    }
-    #    service.create_order(new_order)
-    #    flash(f"Order received!", "success")
-    #    return redirect("/user/orders")
-    #except Exception as err:
-    #    print(err)
-    #    flash(f"Oops, something went wrong: {err}", "warning")
-    #    return redirect("/products")
+    service = current_app.config["SPREADSHEET_SERVICE"]
+    try:
+        new_order = {
+            "user_email": user_email,
+            "product_id": int(product_id),
+            "product_name": product_name,
+            "product_price": float(product_price)
+        }
+        service.create_record("orders", new_order)
+        flash(f"Order received!", "success")
+        return redirect("/user/orders")
+    except Exception as err:
+        print(err)
+        flash(f"Oops, something went wrong: {err}", "warning")
+        return redirect("/products")
 
 
 @user_routes.route("/user/orders")
@@ -62,11 +63,12 @@ def create_order():
 def orders():
     print("USER ORDERS...")
 
-    # TODO: implement ordering
-    orders = []
+    ## TODO: implement ordering
+    #orders = []
 
-    #current_user = session.get("current_user")
-    #service = current_app.config["SPREADSHEET_SERVICE"]
-    #orders = service.get_user_orders(current_user["email"])
-
+    current_user = session.get("current_user")
+    service = current_app.config["SPREADSHEET_SERVICE"]
+    orders = service.get_user_orders(current_user["email"])
+    #breakpoint()
+    orders = sorted(orders, key=itemgetter("created_at"), reverse=True)
     return render_template("user_orders.html", orders=orders)
