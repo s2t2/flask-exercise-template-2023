@@ -6,12 +6,13 @@ from dotenv import load_dotenv
 from flask import Flask
 from authlib.integrations.flask_client import OAuth
 
-#from app.spreadsheet_service import SpreadsheetService
-
 from web_app.routes.home_routes import home_routes
 from web_app.routes.product_routes import product_routes
 from web_app.routes.auth_routes import auth_routes
 from web_app.routes.user_routes import user_routes
+
+from web_app.services.spreadsheet_service import SpreadsheetService
+
 
 load_dotenv()
 
@@ -71,7 +72,7 @@ def create_app():
     # SERVICES
     #
 
-    #app.config["SPREADSHEET_SERVICE"] = SpreadsheetService()
+    app.config["SPREADSHEET_SERVICE"] = SpreadsheetService()
 
     #
     # ROUTES

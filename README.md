@@ -24,6 +24,7 @@ pip install -r requirements.txt
 
   + [Google Cloud](/setup/GOOGLE_CLOUD.md)
   + [Google Login](/setup/GOOGLE_LOGIN.md)
+  + [Google APIs](/setup/GOOGLE_APIS.md)
 
 
 ## Configuration
@@ -39,6 +40,9 @@ FLASK_APP="web_app"
 # for google login:
 GOOGLE_CLIENT_ID="___________"
 GOOGLE_CLIENT_SECRET="___________"
+
+# for google sheets:
+GOOGLE_SHEETS_DOCUMENT_ID="___________"
 ```
 
 ## Usage

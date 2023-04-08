@@ -15,7 +15,7 @@ Authlib #==1.2.0
 requests # Authlib needs this (see https://github.com/lepture/authlib/issues/365)
 
 # database (google sheets):
-#gspread
+gspread
 
 # database (relational)
 #Flask-SQLAlchemy==3.0.3

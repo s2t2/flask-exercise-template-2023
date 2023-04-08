@@ -2,6 +2,8 @@
 # secret credentials / environment variables:
 .env
 
+# google api service account credentials:
+google-credentials.json
 
 
 # Byte-compiled / optimized / DLL files
